@@ -6,8 +6,14 @@ const contenedor = new Contenedor();
 const router = Router();
 
 router.get('/productos', async (req, res) => {     
-    let todos = await contenedor.getAll();     
-    res.render('productos', todos);    
+    let todos = await contenedor.getAll(); 
+    if (!todos){
+        res.render('productos', todos);    
+    }else {
+        
+        res.render('productos', '');    
+    }
+    
 });
 
 router.get('/productosEjs', async (req, res) => {     

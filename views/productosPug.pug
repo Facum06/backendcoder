@@ -11,6 +11,7 @@ html
         </div>     
         <div class="row">
             <div class="col">
+            
                 <table class="table table-striped table-hover">
                     <thead class="thead-dark">
                         <tr>
@@ -21,15 +22,24 @@ html
                         </tr>
                     </thead>
                     <tbody>
+                    if (!productos)
+                        <tr>
+                            <td colspan="4">
+                                h3= "NO HAY PRODUCTOS"
+                            </td>
+                        </tr>
+                    else 
                      each produ in productos
-                            <tr>
-                                td= produ.title 
-                                td= produ.price
-                                td= produ.thumbail
-                                td= produ.id 
-                            </tr>
+                        <tr>
+                            td= produ.title 
+                            td= produ.price
+                            td= produ.thumbail
+                            td= produ.id 
+                        </tr>
+                      
                     </tbody>
                 </table>
+                
             </div>
         </div>  
         <div class="row">
