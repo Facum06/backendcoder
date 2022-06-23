@@ -1,20 +1,26 @@
 const express = require('express');
-const Contenedor = require('./contenedor.js');
+
 const app = express();
-const contenedor = new Contenedor();
+const router = require("./routes.js");
+const exphbs = require('express-handlebars');
 
 const PORT = process.env.PORT || 8080;
 
-app.get('/productos', async (req, res) => {     
-    let todos = await contenedor.getAll();       
-    res.json(todos);
-});
+//app.set('view engine', 'pug');
+//app.set('view engine', 'handlebars');
 
-app.get('/productoRandom/:id', async (req, res) => {    
-    let id = req.params.id;
-    let random = await contenedor.getById(id);       
-    res.json(random);
-});
+app.set('view engine', 'ejs');
+
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+app.use("/api", router);
+app.use("/", express.static(__dirname + "/public"));
+
+app.engine('handlebars', exphbs.engine());
+app.set('productos', 'views');
+app.set('productosPug', 'views');
+app.set('productosEjs', 'views');
 
 const server = app.listen(PORT, () => {
     console.log(`Servidor iniciado en puerto ${server.address().port}`);

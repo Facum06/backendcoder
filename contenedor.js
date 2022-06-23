@@ -9,7 +9,7 @@ class Contenedor {
 
    async save(obj){
         try{
-            fs.readFile('productos.json','utf-8', (error, contenido) => {
+            await fs.readFile('productos.json','utf-8', (error, contenido) => {
                 if (error){
                     console.log(error);
                     return false;
@@ -20,20 +20,30 @@ class Contenedor {
                         idActual = 1;
                         obj.id = idActual;
                         json.push(obj);
-                        //fs.writeFile("productos.json", JSON.stringify(json));
+                        fs.writeFile("productos.json", JSON.stringify(json) + "\r\n", err => {
+                            if (err){                                                   
+                                return err;
+                            }else {                                                            
+                                return idActual;
+                            }
+                        });      
                     }else {          
                         json = JSON.parse(contenido);             
-                        idActual = json.length + 1;    
+                        let lastItem = 0;
+                        json.forEach((value, i) => { 
+                            lastItem++;
+                        });                                               
+                        idActual = lastItem + 1;    
                         obj.id = idActual;          
                         json.push(obj); 
-                    }   
-                    fs.writeFile("productos.json", JSON.stringify(json) + "\r\n", err => {
-                        if (err){
-                            console.error(err);                            
-                        }else {
-                            console.log('ok');
-                        }
-                    });             
+                        fs.writeFile("productos.json", JSON.stringify(json) + "\r\n", err => {
+                            if (err){                                                   
+                                return err;
+                            }else {            
+                                return idActual;
+                            }
+                        });     
+                    }    
                 }
             }); 
         }catch (err){
@@ -49,7 +59,8 @@ class Contenedor {
             }else {          
                 let status = 0;
                 let retorno = [];                           
-                contenido.forEach((value,i) => {                    
+                contenido.forEach((value,i) => { 
+                                 
                     if(value.id == id){
                         status = 1;
                         retorno = value;   
@@ -74,7 +85,6 @@ class Contenedor {
         }catch (error){
             console.log(error);
         }
-        
     }
 
     async deleteById(id){
@@ -83,21 +93,21 @@ class Contenedor {
                 console.log(error);
                 return false;
             }else{                        
-                let idActual;
                 let json = [];
                 if (contenido.length == 0){
                     console.log("No hay información en el archivo");
                 }else {          
-                    json = JSON.parse(contenido);             
+                    json = JSON.parse(contenido);      
                     json.forEach((value, i) => {
-                        if(value.id === id){
-                            delete json[i];
-                            this.deleteAll();
-                            this.save(json);
-                            console.log("se borro el "+id)
+                        if(value.id == id){                            
+                            json.splice(i, 1);
+                            let stat = this.deleteAll();
+                            if (stat != ''){
+                                this.save(json);                            
+                                return id;
+                            }
                         }
-                    }); 
-                                       
+                    });               
                 }           
             }
         }); 
@@ -108,7 +118,8 @@ class Contenedor {
             if (err){
                 console.error(err);                            
             }else {
-                console.log('ok borrado todo');
+                //console.log('ok borrado todo');
+                return 'ok';
             }
         });   
     }
