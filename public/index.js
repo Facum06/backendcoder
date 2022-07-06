@@ -55,7 +55,7 @@ function render(data) {
                         </tr>`;
             })
             .join(" ");
-            document.getElementById('tablaProd').style.display = "block";
+            document.getElementById('tablaProd').style.display = "inline-table";
             document.getElementById("tablaProdB").innerHTML = html;
       }
   }
