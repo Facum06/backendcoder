@@ -7,10 +7,9 @@ const router = Router();
 
 router.get('/productos', async (req, res) => {     
     let todos = await contenedor.getAll(); 
-    if (!todos){
-        res.render('productos', todos);    
+    if (todos){
+        res.render('productos', todos);
     }else {
-        
         res.render('productos', '');    
     }
     
@@ -29,11 +28,24 @@ router.get('/productosPug', async (req, res) => {
       });    
 });
 
+router.get('/productosList', async (req, res) => {     
+    let todos = await contenedor.getAll();   
+
+    res.json(todos);
+});
+
 router.post('/productos', async (req, res) => {         
     const nuevoProducto = req.body;
-    let result = await contenedor.save(nuevoProducto);
-    //res.json({id: result});
-    return res.redirect("/");
+    let todos = await contenedor.getAll();   
+    let nuevoId = todos.length +1;
+    await contenedor.save(nuevoProducto);
+    res.json({
+        title: nuevoProducto.title,
+        price: nuevoProducto.price,
+        thumbail: nuevoProducto.thumbail,
+        id: nuevoId
+      });
+    //return res.redirect("/");
 });
 
 router.get('/productos/:id', async (req, res) => {    

@@ -8,13 +8,14 @@ class Contenedor {
     }
 
    async save(obj){
+    let idActual;
         try{
             await fs.readFile('productos.json','utf-8', (error, contenido) => {
                 if (error){
                     console.log(error);
                     return false;
                 }else{                        
-                    let idActual;
+                    
                     let json = [];
                     if (contenido.length == 0){
                         idActual = 1;
@@ -80,8 +81,13 @@ class Contenedor {
 
    async getAll(){
         try {
-            const contenido = JSON.parse(await fs.promises.readFile('productos.json','utf-8'));
-            return contenido;
+            let todo = await fs.promises.readFile('productos.json','utf-8');
+            if (todo.length > 0){
+                const contenido = JSON.parse(todo);
+                return contenido;
+            }else {
+                return '';
+            }
         }catch (error){
             console.log(error);
         }
