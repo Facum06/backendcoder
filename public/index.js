@@ -1,12 +1,18 @@
 const socket = io();
 
+function chatUp(){
+  const chatCorreo = document.querySelector("#chatCorreo");
+  const chatMensaje = document.querySelector("#chatMensaje");
+  socket.emit('mensaje', {'correo': chatCorreo.value, 'texto': chatMensaje.value});
+  chatMensaje.value = '';
+  chatMensaje.focus();
+}
+
 const btnChat = document.querySelector('#btnChat');
 const formularioProdu = document.querySelector('#produForm');
 
 btnChat.addEventListener('click', () => {
-  const chatCorreo = document.querySelector("#chatCorreo");
-  const chatMensaje = document.querySelector("#chatMensaje");
-  socket.emit('mensaje', {'correo': chatCorreo.value, 'texto': chatMensaje.value});
+  chatUp();
 });
 
 let form = document.querySelector('#produForm');
@@ -70,7 +76,6 @@ socket.on('productos', function (data) {
 });
 
 socket.on('mensajes', mensajes => {
-  
     const mensajesInput = mensajes.map(mensaje => `${mensaje.mensaje.correo} :  ${mensaje.mensaje.texto}`).join("\n")
     document.querySelector("#chatContenedor").innerHTML = mensajesInput;
 });
@@ -87,3 +92,15 @@ function traigoListado(){
     );
 }
 
+document.addEventListener('keypress',function(e) {
+  let key = e.keyCode;
+  if(key === 13) {
+    const chatCorreo = document.querySelector("#chatCorreo");
+    const chatMensaje = document.querySelector("#chatMensaje");
+    if (chatCorreo.value !== '' && chatMensaje.value !== ''){
+      chatUp();
+    }else {
+      alert('NECESITA COMPLETAR LOS CAMPOS PARA CHATEAR');
+    }
+  }
+});
