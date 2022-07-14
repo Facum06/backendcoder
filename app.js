@@ -12,6 +12,10 @@ const io = new IOServer(httpServer)
 const mensajes = []
 const PORT = process.env.PORT || 8080;
 
+const { mysql, sqlite } = require('./dbConnect.js');
+const knexMysql = require('knex')(mysql);
+const knexSqlite = require('knex')(sqlite);
+
 //app.set('view engine', 'pug');
 app.set('view engine', 'handlebars');
 //app.set('view engine', 'ejs');
@@ -38,12 +42,43 @@ io.on('connection', (socket) => {
     //Entrega los mensajes
     socket.on('mensaje', data => {
         mensajes.push({ socketid : socket.id, mensaje: data })
-        io.sockets.emit('mensajes', mensajes);        
+        function listMsg(){
+            knexSqlite
+                .from("mensajes")
+                .select("*")
+                .then((rows) => {
+                    io.sockets.emit('mensajes', mensajes);   
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(500).end()
+                }
+            )
+        }
+        knexSqlite("mensajes")
+            .insert(data)
+            .then(() => {
+                console.log("Ok");
+                listMsg();
+            })
+            .catch((err) => {
+                console.log(err);
+            }
+        )    
     })
-
     socket.emit('productos', productos);
-    socket.on('producto', data => {       
-        io.sockets.emit('productos', data);        
+    socket.on('producto', data => {   
+        knexMysql
+            .from("productos")
+            .select("*")
+            .then((rows) => {
+                io.sockets.emit('productos', rows);                            
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).end()
+            }
+        )
     })
 });
 

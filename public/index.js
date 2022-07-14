@@ -3,7 +3,7 @@ const socket = io();
 function chatUp(){
   const chatCorreo = document.querySelector("#chatCorreo");
   const chatMensaje = document.querySelector("#chatMensaje");
-  socket.emit('mensaje', {'correo': chatCorreo.value, 'texto': chatMensaje.value});
+  socket.emit('mensaje', {'email': chatCorreo.value, 'mensaje': chatMensaje.value});
   chatMensaje.value = '';
   chatMensaje.focus();
 }
@@ -76,7 +76,7 @@ socket.on('productos', function (data) {
 });
 
 socket.on('mensajes', mensajes => {
-    const mensajesInput = mensajes.map(mensaje => `${mensaje.mensaje.correo} :  ${mensaje.mensaje.texto}`).join("\n")
+    const mensajesInput = mensajes.map(mensaje => `${mensaje.mensaje.email} :  ${mensaje.mensaje.mensaje}`).join("\n")
     document.querySelector("#chatContenedor").innerHTML = mensajesInput;
 });
 

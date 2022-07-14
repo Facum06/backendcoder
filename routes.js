@@ -2,8 +2,10 @@ const express = require('express');
 const {Router} = express;
 const Contenedor = require('./contenedor.js');
 const contenedor = new Contenedor();
-
 const router = Router();
+const { mysql } = require('./dbConnect.js');
+const knexMysql = require('knex')(mysql);
+
 
 router.get('/productos', async (req, res) => {     
     let todos = await contenedor.getAll(); 
@@ -12,7 +14,6 @@ router.get('/productos', async (req, res) => {
     }else {
         res.render('productos', '');    
     }
-    
 });
 
 router.get('/productosEjs', async (req, res) => {     
@@ -39,12 +40,20 @@ router.post('/productos', async (req, res) => {
     let todos = await contenedor.getAll();   
     let nuevoId = todos.length +1;
     await contenedor.save(nuevoProducto);
-    res.json({
-        title: nuevoProducto.title,
-        price: nuevoProducto.price,
-        thumbail: nuevoProducto.thumbail,
-        id: nuevoId
-      });
+    knexMysql("productos")
+        .insert(nuevoProducto)
+        .then(() => {
+            res.json({
+                title: nuevoProducto.title,
+                price: nuevoProducto.price,
+                thumbail: nuevoProducto.thumbail,
+                id: nuevoId
+              });
+        })
+        .catch((err) => {
+            console.log(err);
+        }
+    )
     //return res.redirect("/");
 });
 
