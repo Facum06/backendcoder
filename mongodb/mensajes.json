@@ -1,0 +1,121 @@
+[{
+  "_id": {
+    "$oid": "62deaeb85324f6af843e9e55"
+  },
+  "id": 1,
+  "email": "facu.maderna@gmail.com",
+  "date": {
+    "$date": {
+      "$numberLong": "1658760888682"
+    }
+  },
+  "messagetext": "Hola!"
+},{
+  "_id": {
+    "$oid": "62deaeb85324f6af843e9e56"
+  },
+  "id": 2,
+  "email": "respuestasMongoDb@gmail.com",
+  "date": {
+    "$date": {
+      "$numberLong": "1658760888682"
+    }
+  },
+  "messagetext": "Hola Facu!"
+},{
+  "_id": {
+    "$oid": "62deaeb85324f6af843e9e57"
+  },
+  "id": 3,
+  "email": "facu.maderna@gmail.com",
+  "date": {
+    "$date": {
+      "$numberLong": "1658760888682"
+    }
+  },
+  "messagetext": "Como estas?"
+},{
+  "_id": {
+    "$oid": "62deaeb85324f6af843e9e58"
+  },
+  "id": 4,
+  "email": "respuestasMongoDb@gmail.com",
+  "date": {
+    "$date": {
+      "$numberLong": "1658760888682"
+    }
+  },
+  "messagetext": "Bien y vos?"
+},{
+  "_id": {
+    "$oid": "62deaeb85324f6af843e9e59"
+  },
+  "id": 5,
+  "email": "facu.maderna@gmail.com",
+  "date": {
+    "$date": {
+      "$numberLong": "1658760888682"
+    }
+  },
+  "messagetext": "Tengo que hacerte una consulta"
+},{
+  "_id": {
+    "$oid": "62deaeb85324f6af843e9e5a"
+  },
+  "id": 6,
+  "email": "respuestasMongoDb@gmail.com",
+  "date": {
+    "$date": {
+      "$numberLong": "1658760888682"
+    }
+  },
+  "messagetext": "Si como no"
+},{
+  "_id": {
+    "$oid": "62deaeb85324f6af843e9e5b"
+  },
+  "id": 7,
+  "email": "facu.maderna@gmail.com",
+  "date": {
+    "$date": {
+      "$numberLong": "1658760888682"
+    }
+  },
+  "messagetext": "Necesito exportar las base de datos"
+},{
+  "_id": {
+    "$oid": "62deaeb85324f6af843e9e5c"
+  },
+  "id": 8,
+  "email": "respuestasMongoDb@gmail.com",
+  "date": {
+    "$date": {
+      "$numberLong": "1658760888682"
+    }
+  },
+  "messagetext": "Ok, por favor indique cuál"
+},{
+  "_id": {
+    "$oid": "62deaeb85324f6af843e9e5d"
+  },
+  "id": 9,
+  "email": "facu.maderna@gmail.com",
+  "date": {
+    "$date": {
+      "$numberLong": "1658760888682"
+    }
+  },
+  "messagetext": "Ecommerce, gracias!"
+},{
+  "_id": {
+    "$oid": "62deaeb85324f6af843e9e5e"
+  },
+  "id": 10,
+  "email": "respuestasMongoDb@gmail.com",
+  "date": {
+    "$date": {
+      "$numberLong": "1658760888682"
+    }
+  },
+  "messagetext": "Perfecto ya la exportamos, saludos!"
+}]

@@ -1,0 +1,91 @@
+[{
+  "_id": {
+    "$oid": "62deacb05324f6af843e9e4c"
+  },
+  "id": 2,
+  "title": "GT Fender Stratocaster USA",
+  "price": 1310,
+  "thumbail": "https://upload.wikimedia.org/wikipedia/commons/6/63/Fender_Stratocaster_004-2.jpg",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62deacb05324f6af843e9e4d"
+  },
+  "id": 3,
+  "title": "GT Gibson Les Paul Custom",
+  "price": 1430,
+  "thumbail": "https://static.gibson.com/product-images/Custom/CUS118365/Ebony/front-banner-1600_900.png",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62deacb05324f6af843e9e4e"
+  },
+  "id": 4,
+  "title": "GT Gibson Les Paul GoldTop",
+  "price": 1900,
+  "thumbail": "https://therockstore.com.ar/wp-content/uploads/2021/10/1618410653292.jpg",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62deacb05324f6af843e9e4f"
+  },
+  "id": 5,
+  "title": "GT Gibson SG",
+  "price": 1190,
+  "thumbail": "https://http2.mlstatic.com/D_NQ_NP_910187-MLA48762610667_012022-W.jpg",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62deacb05324f6af843e9e50"
+  },
+  "id": 6,
+  "title": "GT Gibson Les Paul Standard",
+  "price": 2040,
+  "thumbail": "https://therockstore.com.ar/wp-content/uploads/2021/10/1621278929633.jpg",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62deacb05324f6af843e9e51"
+  },
+  "id": 7,
+  "title": "GT Gretsch Electromatic Collection g5230",
+  "price": 2390,
+  "thumbail": "https://storage.googleapis.com/tecnowestune/2022/01/ae4bc4aa-g5230t-electromatic-jet-ft-single-cut-bigsby-hh-trem-wal-hd-160260.jpg",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62deacb05324f6af843e9e52"
+  },
+  "id": 8,
+  "title": "GT Gretsch G5422TG",
+  "price": 2790,
+  "thumbail": "https://m.media-amazon.com/images/I/519GYTtfeEL._AC_SX569_.jpg",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62deacb05324f6af843e9e53"
+  },
+  "id": 9,
+  "title": "GT Gibson Firebird",
+  "price": 1499,
+  "thumbail": "https://therockstore.com.ar/wp-content/uploads/2021/10/1620913675219.jpg",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62deacb05324f6af843e9e54"
+  },
+  "id": 10,
+  "title": "GT Fender Mustang 65",
+  "price": 2270,
+  "thumbail": "https://bairesrocks.vteximg.com.br/arquivos/ids/203288/863277-MLA31578454700_072019-F.jpg?v=637313064677770000",
+  "stock": 100
+},{
+  "_id": {
+    "$oid": "62deaf795324f6af843e9e5f"
+  },
+  "id": 11,
+  "title": "GT Fender Squier Stratocaster",
+  "price": "790",
+  "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_875934-MLA46363591735_062021-W.jpg",
+  "stock": 100
+}]

@@ -1,0 +1,46 @@
+db.productos.insertMany( [
+	{"id":1,"title":"GT Fender Telecaster USA","price":1200,"thumbail":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Fender_Telecaster_American_Vintage_1952_transparent.png/200px-Fender_Telecaster_American_Vintage_1952_transparent.png"},
+	{"id":2,"title":"GT Fender Stratocaster USA","price":1310,"thumbail":"https://upload.wikimedia.org/wikipedia/commons/6/63/Fender_Stratocaster_004-2.jpg"},
+	{"id":3,"title":"GT Gibson Les Paul Custom","price":1430,"thumbail":"https://static.gibson.com/product-images/Custom/CUS118365/Ebony/front-banner-1600_900.png"},
+	{"id":4,"title":"GT Gibson Les Paul GoldTop","price":1900,"thumbail":"https://therockstore.com.ar/wp-content/uploads/2021/10/1618410653292.jpg"},
+	{"id":5,"title":"GT Gibson SG","price":1190,"thumbail":"https://http2.mlstatic.com/D_NQ_NP_910187-MLA48762610667_012022-W.jpg"},
+	{"id":6,"title":"GT Gibson Les Paul Standard","price":2040,"thumbail":"https://therockstore.com.ar/wp-content/uploads/2021/10/1621278929633.jpg"},
+	{"id":7,"title":"GT Gretsch Electromatic Collection g5230","price":2390,"thumbail":"https://storage.googleapis.com/tecnowestune/2022/01/ae4bc4aa-g5230t-electromatic-jet-ft-single-cut-bigsby-hh-trem-wal-hd-160260.jpg"},
+	{"id":8,"title":"GT Gretsch G5422TG","price":2790,"thumbail":"https://m.media-amazon.com/images/I/519GYTtfeEL._AC_SX569_.jpg"},
+	{"id":9,"title":"GT Gibson Firebird","price":1499,"thumbail":"https://therockstore.com.ar/wp-content/uploads/2021/10/1620913675219.jpg"},
+	{"id":10,"title":"GT Fender Mustang 65","price":2270,"thumbail":"https://bairesrocks.vteximg.com.br/arquivos/ids/203288/863277-MLA31578454700_072019-F.jpg?v=637313064677770000"}
+])
+
+db.mensajes.insertMany( [
+    {"id":1,"email":"facu.maderna@gmail.com","date":new Date(),"messagetext":"Hola!"}, 
+    {"id":2,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Hola Facu!"}, 
+    {"id":3,"email":"facu.maderna@gmail.com","date":new Date(),"messagetext":"Como estas?"}, 
+    {"id":4,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Bien y vos?"}, 
+    {"id":5,"email":"facu.maderna@gmail.com","date":new Date(),"messagetext":"Tengo que hacerte una consulta"}, 
+    {"id":6,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Si como no"}, 
+    {"id":7,"email":"facu.maderna@gmail.com","date":new Date(),"messagetext":"Necesito exportar las base de datos"}, {"id":8,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Ok, por favor indique cuál"}, {"id":9,"email":"facu.maderna@gmail.com","date":new Date(),"messagetext":"Ecommerce, gracias!"}, {"id":10,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Perfecto ya la exportamos, saludos!"}
+    ])
+
+db.productos.find()
+db.mensajes.find().pretty()
+
+db.productos.estimatedDocumentCount()
+db.mensajes.estimatedDocumentCount()
+
+db.productos.insert(
+    {"id":11,"title":"GT Fender Squier Stratocaster","price":"790","thumbnail":"https://http2.mlstatic.com/D_NQ_NP_875934-MLA46363591735_062021-W.jpg"}
+)
+
+db.productos.find({price :{$lt: 1000}})
+db.productos.find({price :{$gt: 999.99, $lt: 3000.01}})
+db.productos.find({price :{$gt: 3000}})
+db.productos.find({}, { title: 1, _id:0}).sort({price: 1}).skip(2).limit(1).pretty()
+
+db.productos.updateMany({}, {$set:{"stock": 100}})
+db.productos.updateMany({price:{$gt:4000} }, {$set:{"stock": 0}})
+db.productos.remove( { price: { $gt: 1000 } }, true )
+
+db.createUser(
+    {	user: "pepe",
+        pwd: "asd456",
+        roles:[{role: "userAdminAnyDatabase" , db:"admin"}]})
