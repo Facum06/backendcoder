@@ -18,7 +18,10 @@ db.mensajes.insertMany( [
     {"id":4,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Bien y vos?"}, 
     {"id":5,"email":"facu.maderna@gmail.com","date":new Date(),"messagetext":"Tengo que hacerte una consulta"}, 
     {"id":6,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Si como no"}, 
-    {"id":7,"email":"facu.maderna@gmail.com","date":new Date(),"messagetext":"Necesito exportar las base de datos"}, {"id":8,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Ok, por favor indique cuál"}, {"id":9,"email":"facu.maderna@gmail.com","date":new Date(),"messagetext":"Ecommerce, gracias!"}, {"id":10,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Perfecto ya la exportamos, saludos!"}
+    {"id":7,"email":"facu.maderna@gmail.com","date":new Date(),"messagetext":"Necesito exportar las base de datos"}, 
+    {"id":8,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Ok, por favor indique cuál"}, 
+    {"id":9,"email":"facu.maderna@gmail.com","date":new Date(),"messagetext":"Ecommerce, gracias!"}, 
+    {"id":10,"email":"respuestasMongoDb@gmail.com","date":new Date(),"messagetext":"Perfecto ya la exportamos, saludos!"}
     ])
 
 db.productos.find()
